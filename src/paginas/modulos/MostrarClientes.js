@@ -24,19 +24,20 @@ const MostrarClientes = () => {
     const elimiarClientes = async (e, idCliente) => {
         e.preventDefault();
         const response = await APIInvoke.invokeDELETE(`/api/clientes/${idCliente}`);
-        setClientes(response.clientes);
         if (response.msg === 'El cliente ha sido eliminado') {
             const msg = 'El cliente ha sido eliminado correctamente';
             swal({
                 title: 'Informacion',
                 text: msg,
                 icon: 'success',
-                confirm: {
-                    text: 'ok',
-                    value: true,
-                    visible: true,
-                    className: "btn btn-primary",
-                    closeModal: true
+                button: {
+                    confirm: {
+                        text: 'ok',
+                        value: true,
+                        visible: true,
+                        className: "btn btn-primary",
+                        closeModal: true
+                    }
                 }
             });
             getClientes();
@@ -46,12 +47,14 @@ const MostrarClientes = () => {
                 title: 'Error',
                 text: msg,
                 icon: 'error',
-                confirm: {
-                    text: 'ok',
-                    value: true,
-                    visible: true,
-                    className: "btn btn-danger",
-                    closeModal: true
+                button: {
+                    confirm: {
+                        text: 'ok',
+                        value: true,
+                        visible: true,
+                        className: "btn btn-danger",
+                        closeModal: true
+                    }
                 }
             });
         }

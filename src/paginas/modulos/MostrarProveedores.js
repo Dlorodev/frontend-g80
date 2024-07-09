@@ -15,7 +15,7 @@ const MostrarProveedores = () => {
     const getProveedores = async () => {
         const response = await APIInvoke.invokeGET('/api/proveedores');
         setProveedores(response);
-        
+
     };
 
     useEffect(() => {
@@ -25,7 +25,6 @@ const MostrarProveedores = () => {
     const eliminarProveedor = async (e, idProveedor) => {
         e.preventDefault();
         const response = await APIInvoke.invokeDELETE(`/api/proveedores/${idProveedor}`);
-        setProveedores(response.proveedores);
 
         if (response.msg === 'El proveedor ha sido eliminado') {
             const msg = 'El proveedor ha sido eliminado correctamente';
